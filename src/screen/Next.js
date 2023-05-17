@@ -20,13 +20,12 @@ const Next = () => {
           <div className="form">
             <section>
               <Navbar className="Navbar">
+                <a href="/survey/create">
+                  {" "}
+                  <i class="gg-arrow-left"></i>{" "}
+                </a>
                 <Container>
-                  <Navbar.Brand href="#home" className="logo">
-                    <a href="" class="previous round">
-                      &#8249;
-                    </a>
-                    Create Questions
-                  </Navbar.Brand>
+                  <Navbar.Brand className="logo">Create Questions</Navbar.Brand>
                   <Navbar.Toggle />
                   <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
@@ -41,11 +40,48 @@ const Next = () => {
               </Navbar>
             </section>
             <br />
-            <div>
+            <div className="box">
               <h1>
-                Q1. <span>Add a Question ?</span>
+                Q1. <span> Question ?</span>
               </h1>
-              <input type="text"></input>
+              <input type="text" placeholder="Enter Question"></input>
+              &nbsp; &nbsp; &nbsp; <i class="fa fa-gear"></i>{" "}
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Value 1
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                  checked
+                />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Value 2
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                  checked
+                />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Value 3
+                </label>
+              </div>
+              <button className="add">Add Questions </button>
             </div>
           </div>
         </div>

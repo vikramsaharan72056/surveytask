@@ -45,13 +45,13 @@ const Create = () => {
               <label for="inputName" class="form-label">
                 Name
               </label>
-              <input type="text" class="form-control" id="inputEmail4" />
+              <input type="text" class="form-control" />
             </div>
             <div class="col-md-12">
               <label for="text" class="form-label">
                 Description
               </label>
-              <input type="text" class="form-control" id="inputPassword4" />
+              <input type="text" class="form-control" />
             </div>
             <div class="col-5">
               <label for="date" class="form-label">

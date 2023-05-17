@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Survey from "./screen/Survey";
 import Create from "./screen/Create";
 import Next from "./screen/Next";
+import Save from "./screen/Save";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/survey" element={<Survey />} />
           <Route exact path="/survey/create" element={<Create />} />
           <Route exact path="/survey/create/next" element={<Next />} />
+          <Route exact path="/survey/create/next/save" element={<Save />} />
 
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/createuser" element={<Signup />} /> */}
