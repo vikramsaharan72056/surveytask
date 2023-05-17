@@ -1,0 +1,24 @@
+.save{
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 50px;
+}
+.add{
+    background-color: rgb(86, 86, 88);
+    color: aliceblue;
+    border-radius: 50px;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+.box{
+    background-color: rgb(128, 128, 127);
+    color: aliceblue;
+    width: 280%;
+    margin-top: 5%;
+    margin-left: 0%;
+
+}
+
+.box > input{
+    padding: 0% 25%;
+}
