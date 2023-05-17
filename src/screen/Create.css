@@ -1,0 +1,31 @@
+.section{
+ display: flex;
+    width: 150%;
+    
+}
+.end{
+    float: right;
+}
+.Navbar{
+    border-bottom: 1px solid black;
+}
+
+.logo{
+    float: left;
+}
+.next{
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 50px;
+}
+.cancel{
+    background-color: aliceblue;
+    color: blue;
+    border-radius: 50px;
+
+}
+.form{
+    
+    margin-left: 5%;
+    margin-right: 40%;
+}
