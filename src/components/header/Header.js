@@ -10,7 +10,7 @@ const Header = () => {
     <div>
       <Navbar className="Navbar">
         <Container>
-          <Navbar.Brand href="#home" className="logo">
+          <Navbar.Brand href="/" className="logo">
             LOGO
           </Navbar.Brand>
           <Navbar.Toggle />
