@@ -11,7 +11,7 @@ export default function Login() {
   };
   return (
     <div style={styles} className="col-12">
-      <div style={{ marginTop: "20%" }}>
+      <div style={{ marginTop: "20%" }} className="col-4">
         <h2>Welcome to the new era of surveys</h2>
         <h6>Sign in to continue access pages</h6>
         <div style={{ marginTop: "15%" }}>
