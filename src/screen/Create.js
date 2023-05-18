@@ -42,51 +42,20 @@ const Create = () => {
           <br />
           <form class="row g-3">
             <div class="col-md-12">
-              <label for="inputName" class="form-label">
-                Name
-              </label>
-              <input type="text" class="form-control" id="inputEmail4" />
-            </div>
-            <div class="col-md-12">
-              <label for="text" class="form-label">
-                Description
-              </label>
-              <input type="text" class="form-control" id="inputPassword4" />
-            </div>
-            <div class="col-5">
-              <label for="date" class="form-label">
-                Start Date
-              </label>
-              <input
-                type="Date"
-                class="form-control"
-                id="inputAddress"
-                placeholder="1234 Main St"
-              />
-              <label for="date" class="form-label">
-                End Date
-              </label>
-              <input
-                type="Date"
-                class="form-control"
-                id="inputAddress"
-                placeholder="1234 Main St"
-              />
-            </div>
-            <div class="col-md-12">
-              <label for="inputAddress2" class="form-label">
-                Other Criteria
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputAddress2"
-                placeholder=""
-              />
-            </div>
-            <div class="form-group">
-              <input type="file" name="file" id="file" class="input-file" />
-              <span class="js-fileName">Choose a file</span>
+              <div>
+                <div>
+                  <label for="inputName" class="form-label">
+                    Name
+                  </label>
+                  <input type="text" class="form-control" id="inputEmail4" />
+                </div>
+                <div class="col-md-12">
+                  <label for="text" class="form-label">
+                    Description
+                  </label>
+                  <input type="text" class="form-control" id="inputPassword4" />
+                </div>
+              </div>
             </div>
           </form>
         </div>
