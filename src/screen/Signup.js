@@ -35,7 +35,7 @@ export default function SignUp() {
           </div>
         </div>
       </div>
-      <div className="col-5" style={{ margin: "20% 10%" }}>
+      <div className="col-4" style={{ margin: "20% 2%" }}>
         <Container>
           <Card className="shadow">
             <Card.Body>

@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div style={{ display: "flex", height: "128vh" }}>
+    <div className="col-1" style={{ height: "100%", display: "flex" }}>
       <CDBSidebar
         textColor="#fff"
         backgroundColor="#0000ff

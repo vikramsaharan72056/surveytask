@@ -10,7 +10,7 @@ export default function Login() {
     display: "flex",
   };
   return (
-    <div style={styles}>
+    <div style={styles} className="col-12">
       <div style={{ marginTop: "20%" }}>
         <h2>Welcome to the new era of surveys</h2>
         <h6>Sign in to continue access pages</h6>
@@ -27,7 +27,7 @@ export default function Login() {
           </div>
         </div>
       </div>
-      <div className="col-5" style={{ margin: "20% 10%" }}>
+      <div className="col-4" style={{ margin: "20% 2%" }}>
         <Container>
           <Card className="shadow">
             <Card.Body>
