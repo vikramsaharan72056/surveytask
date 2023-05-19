@@ -14,11 +14,7 @@ import Next from "./Next";
 const Save = () => {
   return (
     <div>
-      <Header />
       <div className="section">
-        <div>
-          <Sidebar />
-        </div>
         <div className="form">
           <section>
             <Navbar className="Navbar">
