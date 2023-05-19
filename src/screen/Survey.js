@@ -331,13 +331,8 @@ const DataTable = () => {
     };
   };
   return (
-    <div>
-      <div>
-        <Header />
-      </div>
+    <div className="col-10">
       <div className=" page">
-        <Sidebar />
-
         <CDBContainer>
           <CDBCard className="table">
             <Link to={"Create"}>

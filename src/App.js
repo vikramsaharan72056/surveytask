@@ -20,7 +20,7 @@ function App() {
           <div style={{ height: "100%" }}>
             <Sidebar />
           </div>
-          <div className="col-12">
+          <div className="col-10">
             <Routes>
               {/* <Route exact path="/" element={<Home />} /> */}
               <Route exact path="/survey" element={<Survey />} />
