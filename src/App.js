@@ -13,14 +13,14 @@ import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
-    <div className="App" style={{ height: "100vh" }}>
+    <div className="App" style={{ height: "96vh" }}>
       <>
         <Header />
         <div style={{ display: "flex", height: "100%" }}>
           <div style={{ height: "100%" }}>
             <Sidebar />
           </div>
-          <div className="col-10">
+          <div className="col-12">
             <Routes>
               {/* <Route exact path="/" element={<Home />} /> */}
               <Route exact path="/survey" element={<Survey />} />
