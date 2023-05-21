@@ -10,52 +10,36 @@ import "./Next.css";
 import Modal from "react-modal";
 
 const Next = () => {
+  const [formdata, setFormData] = useState({});
   const [model, setModel] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [themeName, setThemeName] = useState("");
-  const [themeType, setThemeType] = useState("");
-  const [fromType, setFromType] = useState("");
-  const [allQuestionMandatory, setAllQuestionMandatory] = useState("");
-  const [enableSkip, setEnableSkip] = useState("");
-  const [optionType, setOptionType] = useState("");
-  const [font, setFont] = useState("");
-  const [color, setColor] = useState("");
+  const handleChange = (e) => {
+    setFormData({
+      ...formdata,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formdata = {
-      selectedOption,
-      themeName,
-      themeType,
-      fromType,
-      allQuestionMandatory,
-      enableSkip,
-      optionType,
-      font,
-      color,
-    };
     console.log(formdata);
 
-    const saveTheme = async () => {
-      await fetch("http://localhost:8888/savetheme", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formdata),
+    await fetch("http://localhost:8888/savetheme", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formdata),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          alert("Theme saved");
+        }
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data) {
-            alert("Theme saved");
-          }
-        })
-        .catch((err) => {
-          console.log(err.message);
-          alert("not saved");
-        });
-    };
-    saveTheme(formdata);
+      .catch((err) => {
+        console.log(err.message);
+        alert("not saved");
+      });
   };
 
   return (
@@ -67,7 +51,7 @@ const Next = () => {
               <Navbar className="Navbar ">
                 <a href="/survey/create">
                   {" "}
-                  <i class="gg-arrow-left"></i>{" "}
+                  <i className="gg-arrow-left"></i>{" "}
                 </a>
                 <Container>
                   <Navbar.Brand className="logo">Create Questions</Navbar.Brand>
@@ -81,7 +65,6 @@ const Next = () => {
                       >
                         Theme Setting
                       </button>
-
                       <Modal
                         isOpen={model}
                         style={{
@@ -117,10 +100,8 @@ const Next = () => {
                               <select
                                 id="theme"
                                 style={{ width: "70%" }}
-                                value={selectedOption}
-                                onChange={(e) =>
-                                  setSelectedOption(e.target.value)
-                                }
+                                name="selectedOption"
+                                onChange={handleChange}
                               >
                                 <option value="">select</option>
                                 <option value="Theme1">Theme1</option>
@@ -150,10 +131,8 @@ const Next = () => {
                                   <input
                                     type="text"
                                     style={{ width: "18vw" }}
-                                    value={themeName}
-                                    onChange={(e) =>
-                                      setThemeName(e.target.value)
-                                    }
+                                    name="themeName"
+                                    onChange={handleChange}
                                   />
                                 </div>
                                 <div
@@ -168,10 +147,8 @@ const Next = () => {
                                   <select
                                     style={{ width: "18vw" }}
                                     id="themetype"
-                                    value={themeType}
-                                    onChange={(e) =>
-                                      setThemeType(e.target.value)
-                                    }
+                                    name="themeType"
+                                    onChange={handleChange}
                                   >
                                     <option value="">select</option>
                                     <option value="Theme1">Theme1</option>
@@ -191,10 +168,8 @@ const Next = () => {
                                   <br />
                                   <select
                                     style={{ width: "18vw" }}
-                                    value={fromType}
-                                    onChange={(e) =>
-                                      setFromType(e.target.value)
-                                    }
+                                    name="fromType"
+                                    onChange={handleChange}
                                   >
                                     <option value="">select</option>
                                     <option value="Theme1">Theme1</option>
@@ -226,10 +201,8 @@ const Next = () => {
                                     <br />
                                     <select
                                       style={{ width: "18vw" }}
-                                      value={allQuestionMandatory}
-                                      onChange={(e) =>
-                                        setAllQuestionMandatory(e.target.value)
-                                      }
+                                      name="allQuestionMandatory"
+                                      onChange={handleChange}
                                     >
                                       <option value="">select</option>
                                       <option value="yes">Yes</option>
@@ -247,10 +220,8 @@ const Next = () => {
                                     <br />
                                     <select
                                       style={{ width: "18vw" }}
-                                      value={enableSkip}
-                                      onChange={(e) =>
-                                        setEnableSkip(e.target.value)
-                                      }
+                                      name="enableSkip"
+                                      onChange={handleChange}
                                     >
                                       <option value="">select</option>
                                       <option value="yes">Yes</option>
@@ -268,10 +239,8 @@ const Next = () => {
                                     <br />
                                     <select
                                       style={{ width: "18vw" }}
-                                      value={optionType}
-                                      onChange={(e) =>
-                                        setOptionType(e.target.value)
-                                      }
+                                      name="optionType"
+                                      onChange={handleChange}
                                     >
                                       <option value="">select</option>
                                       <option value="square">box</option>
@@ -300,8 +269,8 @@ const Next = () => {
                                   <br />
                                   <select
                                     style={{ width: "20vw" }}
-                                    value={font}
-                                    onChange={(e) => setFont(e.target.value)}
+                                    name="font"
+                                    onChange={handleChange}
                                   >
                                     <option value="">select</option>
                                     <option value="roboto">Roboto</option>
@@ -319,8 +288,8 @@ const Next = () => {
                                   <br />
                                   <input
                                     type="text"
-                                    value={color}
-                                    onChange={(e) => setColor(e.target.value)}
+                                    name="color"
+                                    onChange={handleChange}
                                   />
                                 </div>
                               </div>
@@ -376,39 +345,39 @@ const Next = () => {
                 Q1. <span> Question ?</span>
               </h1>
               <input type="text" placeholder="Enter Question"></input>
-              &nbsp; &nbsp; &nbsp; <i class="fa fa-gear"></i>{" "}
-              <div class="form-check">
+              &nbsp; &nbsp; &nbsp; <i className="fa fa-gear"></i>{" "}
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
                 />
-                <label class="form-check-label" for="flexRadioDefault1">
+                <label className="form-check-label" for="flexRadioDefault1">
                   Value 1
                 </label>
               </div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault2"
                   checked
                 />
-                <label class="form-check-label" for="flexRadioDefault2">
+                <label className="form-check-label" for="flexRadioDefault2">
                   Value 2
                 </label>
               </div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault2"
                   checked
                 />
-                <label class="form-check-label" for="flexRadioDefault2">
+                <label className="form-check-label" for="flexRadioDefault2">
                   Value 3
                 </label>
               </div>

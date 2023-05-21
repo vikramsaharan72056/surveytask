@@ -1,6 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./screen/Home";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Survey from "./screen/Survey";
 import Create from "./screen/Create";
@@ -9,32 +8,60 @@ import Login from "./screen/Login";
 import Signup from "./screen/Signup";
 import Save from "./screen/Save";
 import Header from "./components/header/Header";
-import Sidebar from "./components/sidebar/Sidebar";
+import { createContext } from "react";
+
+export const ThemeContext = createContext({
+  selectedOption: "default",
+  themeName: "Default theme",
+  themeType: "light",
+  fromType: "standard",
+  allQuestionsMandatory: false,
+  enableSkip: true,
+  optionType: "radio",
+  font: "Arial",
+  color: "#000000",
+});
 
 function App() {
-  return (
-    <div className="App" style={{ height: "96vh" }}>
-      <>
-        <Header />
-        <div style={{ display: "flex", height: "100%" }}>
-          <div style={{ height: "100%" }}>
-            <Sidebar />
-          </div>
-          <div className="col-12">
-            <Routes>
-              {/* <Route exact path="/" element={<Home />} /> */}
-              <Route exact path="/survey" element={<Survey />} />
-              <Route exact path="/survey/create" element={<Create />} />
-              <Route exact path="/survey/create/next" element={<Next />} />
-              <Route exact path="/survey/create/next/save" element={<Save />} />
+  const value = {
+    selectedOption: "default",
+    themeName: "Default theme",
+    themeType: "light",
+    fromType: "standard",
+    allQuestionsMandatory: false,
+    enableSkip: true,
+    optionType: "radio",
+    font: "arial",
+    color: "#000000",
+  };
 
-              <Route exact path="/" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-            </Routes>
-          </div>
+  return (
+    <ThemeContext.Provider value={value}>
+      <BrowserRouter>
+        <div className="App" style={{ height: "96vh" }}>
+          <>
+            <Header />
+            <div style={{ display: "flex", height: "100%" }}>
+              <div className="col-12">
+                <Routes>
+                  <Route exact path="/survey" element={<Survey />} />
+                  <Route exact path="/survey/create" element={<Create />} />
+                  <Route exact path="/survey/create/next" element={<Next />} />
+                  <Route
+                    exact
+                    path="/survey/create/next/save"
+                    element={<Save />}
+                  />
+
+                  <Route exact path="/" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                </Routes>
+              </div>
+            </div>
+          </>
         </div>
-      </>
-    </div>
+      </BrowserRouter>
+    </ThemeContext.Provider>
   );
 }
 
