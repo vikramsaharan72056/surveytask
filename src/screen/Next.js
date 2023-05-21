@@ -44,9 +44,12 @@ const Next = () => {
 
   return (
     <div>
-      <div>
+      <div style={{ display: "flex" }} className="col-12">
+        <div style={{ height: "100vh" }}>
+          <Sidebar />
+        </div>
         <div className="section">
-          <div className="form col-5">
+          <div className="form col-9">
             <section>
               <Navbar className="Navbar ">
                 <a href="/survey/create">
@@ -151,10 +154,7 @@ const Next = () => {
                                     onChange={handleChange}
                                   >
                                     <option value="">select</option>
-                                    <option value="Theme1">Theme1</option>
-                                    <option value="Theme2">Theme2</option>
-                                    <option value="Theme3">Theme3</option>
-                                    <option value="Theme4">Theme4</option>
+                                    <option value="Theme1">survey</option>
                                   </select>
                                 </div>
                                 <div
@@ -172,10 +172,7 @@ const Next = () => {
                                     onChange={handleChange}
                                   >
                                     <option value="">select</option>
-                                    <option value="Theme1">Theme1</option>
-                                    <option value="Theme2">Theme2</option>
-                                    <option value="Theme3">Theme3</option>
-                                    <option value="Theme4">Theme4</option>
+                                    <option value="Theme1">One to One</option>
                                   </select>
                                 </div>
                               </div>
@@ -353,7 +350,7 @@ const Next = () => {
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
                 />
-                <label className="form-check-label" for="flexRadioDefault1">
+                <label className="form-check-label" htmlFor="flexRadioDefault1">
                   Value 1
                 </label>
               </div>
@@ -365,7 +362,7 @@ const Next = () => {
                   id="flexRadioDefault2"
                   checked
                 />
-                <label className="form-check-label" for="flexRadioDefault2">
+                <label className="form-check-label" htmlFor="flexRadioDefault2">
                   Value 2
                 </label>
               </div>
@@ -377,7 +374,7 @@ const Next = () => {
                   id="flexRadioDefault2"
                   checked
                 />
-                <label className="form-check-label" for="flexRadioDefault2">
+                <label className="form-check-label" htmlFor="flexRadioDefault2">
                   Value 3
                 </label>
               </div>

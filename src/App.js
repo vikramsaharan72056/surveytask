@@ -8,22 +8,22 @@ import Login from "./screen/Login";
 import Signup from "./screen/Signup";
 import Save from "./screen/Save";
 import Header from "./components/header/Header";
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ThemeContext = createContext({
-  selectedOption: "default",
-  themeName: "Default theme",
-  themeType: "light",
-  fromType: "standard",
+  selectedOption: "",
+  themeName: "",
+  themeType: "",
+  fromType: "",
   allQuestionsMandatory: false,
   enableSkip: true,
-  optionType: "radio",
-  font: "Arial",
-  color: "#000000",
+  optionType: "",
+  font: "",
+  color: "",
 });
 
 function App() {
-  const value = {
+  const [theme, setTheme] = useState({
     selectedOption: "default",
     themeName: "Default theme",
     themeType: "light",
@@ -33,10 +33,21 @@ function App() {
     optionType: "radio",
     font: "arial",
     color: "#000000",
-  };
+  });
+  useEffect(() => {
+    fetch("/themes")
+      .then((res) => res.json())
+      .then((data) => {
+        const selectedTheme = data[data.length - 1];
+        setTheme(selectedTheme);
+      })
+      .catch((err) => {
+        alert("unable to get theme");
+      });
+  });
 
   return (
-    <ThemeContext.Provider value={value}>
+    <ThemeContext.Provider value={theme}>
       <BrowserRouter>
         <div className="App" style={{ height: "96vh" }}>
           <>
