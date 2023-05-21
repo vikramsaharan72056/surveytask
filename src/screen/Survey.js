@@ -41,7 +41,7 @@ const DataTable = () => {
         },
         {
           label: "End date",
-          field: "date",
+          field: "Edate",
           sort: "disabled",
           width: 150,
         },
@@ -331,25 +331,32 @@ const DataTable = () => {
     };
   };
   return (
-    <div className="col-10">
-      <div className=" page">
-        <CDBContainer>
-          <CDBCard className="table">
-            <Link to={"Create"}>
-              <button className="btn">Create</button>
-            </Link>
-            <CDBCardBody>
-              <CDBDataTable
-                striped
-                bordered
-                hover
-                checkbox
-                data={data()}
-                materialSearch
-              />
-            </CDBCardBody>
-          </CDBCard>
-        </CDBContainer>
+    <div style={{ display: "flex" }}>
+      <div>
+        <Sidebar />
+      </div>
+      <div>
+        <div className="col-12">
+          <div className=" page">
+            <CDBContainer>
+              <CDBCard className="table">
+                <Link to={"Create"}>
+                  <button className="btn">Create</button>
+                </Link>
+                <CDBCardBody>
+                  <CDBDataTable
+                    striped
+                    bordered
+                    hover
+                    checkbox
+                    data={data()}
+                    materialSearch
+                  />
+                </CDBCardBody>
+              </CDBCard>
+            </CDBContainer>
+          </div>
+        </div>
       </div>
     </div>
   );
