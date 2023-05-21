@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
 import Container from "react-bootstrap/Container";
@@ -11,6 +11,53 @@ import Modal from "react-modal";
 
 const Next = () => {
   const [model, setModel] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [themeName, setThemeName] = useState("");
+  const [themeType, setThemeType] = useState("");
+  const [fromType, setFromType] = useState("");
+  const [allQuestionMandatory, setAllQuestionMandatory] = useState("");
+  const [enableSkip, setEnableSkip] = useState("");
+  const [optionType, setOptionType] = useState("");
+  const [font, setFont] = useState("");
+  const [color, setColor] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formdata = {
+      selectedOption,
+      themeName,
+      themeType,
+      fromType,
+      allQuestionMandatory,
+      enableSkip,
+      optionType,
+      font,
+      color,
+    };
+    console.log(formdata);
+
+    const saveTheme = async () => {
+      await fetch("http://localhost:8888/savetheme", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formdata),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            alert("Theme saved");
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+          alert("not saved");
+        });
+    };
+    saveTheme(formdata);
+  };
+
   return (
     <div>
       <div>
@@ -27,7 +74,11 @@ const Next = () => {
                   <Navbar.Toggle />
                   <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
-                      <button onClick={() => setModel(true)}>
+                      <button
+                        type="button"
+                        style={{ backgroundColor: "mediumseagreen" }}
+                        onClick={() => setModel(true)}
+                      >
                         Theme Setting
                       </button>
 
@@ -44,10 +95,10 @@ const Next = () => {
                           },
                           content: {
                             position: "absolute",
-                            top: "120px",
-                            left: "300px",
-                            right: "120px",
-                            bottom: "120px",
+                            top: "10%",
+                            left: "30%",
+                            right: "1%",
+                            bottom: "5%",
                             border: "1px solid #ccc",
                             background: "#fff",
                             overflow: "auto",
@@ -66,8 +117,10 @@ const Next = () => {
                               <select
                                 id="theme"
                                 style={{ width: "70%" }}
-                                // value={selectedOption}
-                                // onChange={handleOptionChange}
+                                value={selectedOption}
+                                onChange={(e) =>
+                                  setSelectedOption(e.target.value)
+                                }
                               >
                                 <option value="">select</option>
                                 <option value="Theme1">Theme1</option>
@@ -97,6 +150,10 @@ const Next = () => {
                                   <input
                                     type="text"
                                     style={{ width: "18vw" }}
+                                    value={themeName}
+                                    onChange={(e) =>
+                                      setThemeName(e.target.value)
+                                    }
                                   />
                                 </div>
                                 <div
@@ -108,7 +165,14 @@ const Next = () => {
                                 >
                                   <label htmlFor="text">Theme Type </label>
                                   <br />
-                                  <select style={{ width: "18vw" }}>
+                                  <select
+                                    style={{ width: "18vw" }}
+                                    id="themetype"
+                                    value={themeType}
+                                    onChange={(e) =>
+                                      setThemeType(e.target.value)
+                                    }
+                                  >
                                     <option value="">select</option>
                                     <option value="Theme1">Theme1</option>
                                     <option value="Theme2">Theme2</option>
@@ -125,7 +189,13 @@ const Next = () => {
                                 >
                                   <label htmlFor="text">From Type </label>
                                   <br />
-                                  <select style={{ width: "18vw" }}>
+                                  <select
+                                    style={{ width: "18vw" }}
+                                    value={fromType}
+                                    onChange={(e) =>
+                                      setFromType(e.target.value)
+                                    }
+                                  >
                                     <option value="">select</option>
                                     <option value="Theme1">Theme1</option>
                                     <option value="Theme2">Theme2</option>
@@ -155,9 +225,11 @@ const Next = () => {
                                     </label>
                                     <br />
                                     <select
-                                      style={{
-                                        width: "18vw",
-                                      }}
+                                      style={{ width: "18vw" }}
+                                      value={allQuestionMandatory}
+                                      onChange={(e) =>
+                                        setAllQuestionMandatory(e.target.value)
+                                      }
                                     >
                                       <option value="">select</option>
                                       <option value="yes">Yes</option>
@@ -173,10 +245,16 @@ const Next = () => {
                                   >
                                     <label htmlFor="text">Enable skip </label>
                                     <br />
-                                    <select style={{ width: "18vw" }}>
+                                    <select
+                                      style={{ width: "18vw" }}
+                                      value={enableSkip}
+                                      onChange={(e) =>
+                                        setEnableSkip(e.target.value)
+                                      }
+                                    >
                                       <option value="">select</option>
-                                      <option value="true">Yes</option>
-                                      <option value="false">No</option>
+                                      <option value="yes">Yes</option>
+                                      <option value="no">No</option>
                                     </select>
                                   </div>
                                   <div
@@ -188,7 +266,13 @@ const Next = () => {
                                   >
                                     <label htmlFor="text">Option Type </label>
                                     <br />
-                                    <select style={{ width: "18vw" }}>
+                                    <select
+                                      style={{ width: "18vw" }}
+                                      value={optionType}
+                                      onChange={(e) =>
+                                        setOptionType(e.target.value)
+                                      }
+                                    >
                                       <option value="">select</option>
                                       <option value="square">box</option>
                                       <option value="circle">circle</option>
@@ -214,10 +298,14 @@ const Next = () => {
                                 >
                                   <label htmlFor="text">Font </label>
                                   <br />
-                                  <select style={{ width: "20vw" }}>
+                                  <select
+                                    style={{ width: "20vw" }}
+                                    value={font}
+                                    onChange={(e) => setFont(e.target.value)}
+                                  >
                                     <option value="">select</option>
-                                    <option value="roboto">box</option>
-                                    <option value="bold">circle</option>
+                                    <option value="roboto">Roboto</option>
+                                    <option value="bold">Bold</option>
                                   </select>
                                 </div>
                                 <div
@@ -229,7 +317,11 @@ const Next = () => {
                                 >
                                   <label htmlFor="text">Colour </label>
                                   <br />
-                                  <input type="text" />
+                                  <input
+                                    type="text"
+                                    value={color}
+                                    onChange={(e) => setColor(e.target.value)}
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -241,8 +333,28 @@ const Next = () => {
                                 justifyContent: "space-around",
                               }}
                             >
-                              <button className="cancel">Cancel</button>
-                              <button className="save">Save</button>
+                              <button
+                                className="cancel"
+                                style={{
+                                  width: "15%",
+
+                                  backgroundColor: "Red",
+                                  fontFamily: "20px",
+                                }}
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                className="save"
+                                type="submit"
+                                style={{
+                                  width: "15%",
+                                  backgroundColor: "Green",
+                                }}
+                                onClick={handleSubmit}
+                              >
+                                Save
+                              </button>
                             </div>
                           </form>
                         </div>
