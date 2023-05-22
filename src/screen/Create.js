@@ -1,47 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
-// import React from "react";
+
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
+
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import "./Create.css";
 import Next from "./Next";
 
 const Create = () => {
-  const { selectedOption, setSelectedOption } = useState("");
-  const { startDate, setStartDate } = useState("");
-  const { endDate, setEndDate } = useState("");
-  const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value);
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
+  const [selectedOption, setSelectedOption] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  const formdata = {
+    name,
+    description,
+    selectedOption,
+    startDate,
+    endDate,
   };
-  const handlestartDate = (e) => {
-    setStartDate(e.target.value);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const res = fetch("https://surveyform-xpol.onrender.com/createSurvey", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formdata),
+    });
+    if (res.status === 200) {
+      alert("survey created successfully");
+      navigate("/survey/create/next");
+    }
   };
-  const handleEndDate = (e) => {
-    setEndDate(e.target.value);
-  };
+
   return (
-    <div>
+    <div style={{ display: "flex" }}>
+      <div style={{ height: "98vh" }}>
+        <Sidebar />
+      </div>
       <div className="section">
-        <div className="form col-6">
+        <div className="form col-10">
           <section>
             <Navbar className="Navbar ">
               <Container class="col-12">
-                <Navbar.Brand href="#home" className="logo">
-                  Create Survey
+                <Navbar.Brand>
+                  <b>Create Survey</b>
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                   <Navbar.Text>
                     <button className="cancel">Cancel</button>
                     <span> </span>
-                    <Link to={"Next"}>
-                      <button className="next">Next</button>
-                    </Link>
+
+                    <button className="next" type="submit" onClick={onSubmit}>
+                      Next
+                    </button>
                   </Navbar.Text>
                 </Navbar.Collapse>
               </Container>
@@ -49,16 +70,29 @@ const Create = () => {
           </section>
           <br />
           <form class="row g-3">
-            <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+              }}
+            >
               <div className="col-5">
                 <div>
-                  <label for="inputName" class="form-label">
-                    Name
-                  </label>
-                  <input type="text" class="form-control" id="inputEmail4" />
+                  <label for="inputName">Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="inputEmail4"
+                    style={{ width: "100%" }}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </div>
-                <div class="col-md-12">
-                  <label for="textarea" class="form-label">
+                <div className="form">
+                  <label
+                    for="textarea"
+                    class="form-label"
+                    style={{ marginTop: "8%" }}
+                  >
                     Description
                   </label>
                   <input
@@ -66,18 +100,20 @@ const Create = () => {
                     class="form-control"
                     id="inputPassword4"
                     style={{ height: "100px" }}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
-                <div class="col-md-12">
-                  <label for="dropdown" class="form-label">
+                <div>
+                  <label for="dropdown" style={{ marginTop: "8%" }}>
                     Type of Survey
                   </label>
                   <br />
                   <select
                     id="dropdown"
+                    className="form-control"
                     value={selectedOption}
-                    onChange={handleOptionChange}
-                    className="col-8"
+                    onChange={(e) => setSelectedOption(e.target.value)}
                   >
                     <option value="">--select--</option>
                     <option value="survey 1">survey1</option>
@@ -96,23 +132,25 @@ const Create = () => {
                       type="date"
                       id="startDate"
                       value={startDate}
-                      onChange={handlestartDate}
+                      onChange={(e) => setStartDate(e.target.value)}
                       class="form-control"
                     />
                   </div>
-                  <div className="offset-1">
+                  <div className="offset-2">
                     <label htmlFor="endDate">End Date</label>
                     <input
                       type="date"
                       id="startDate"
                       value={endDate}
-                      onChange={handleEndDate}
+                      onChange={(e) => setEndDate(e.target.value)}
                       class="form-control"
                     />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="otherCriteria">other Criteria</label>
+                  <label htmlFor="otherCriteria" style={{ marginTop: "8%" }}>
+                    other Criteria
+                  </label>
                   <br />
                   <input
                     type="textarea"
@@ -121,7 +159,9 @@ const Create = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="image">Upload Image</label>
+                  <label htmlFor="image" style={{ marginTop: "8%" }}>
+                    Upload Image
+                  </label>
                   <br />
                   <input type="file" class="form-control" />
                 </div>
