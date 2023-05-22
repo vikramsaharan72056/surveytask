@@ -8,9 +8,10 @@ import {
   Card,
   Form,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +28,7 @@ export default function SignUp() {
     console.log(formdata);
 
     try {
-      const res = await fetch("http://localhost:8888/signup", {
+      const res = await fetch("https://surveyform-xpol.onrender.com/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,6 +41,7 @@ export default function SignUp() {
         alert("user already exist");
       } else if (res.status === 200) {
         alert("user created successfully");
+        navigate("/");
       }
     } catch (err) {
       console.log(err.message);
@@ -51,6 +53,7 @@ export default function SignUp() {
     backgroundSize: "cover",
     backgroundPosition: "center",
     display: "flex",
+    height: "100vh",
   };
 
   return (

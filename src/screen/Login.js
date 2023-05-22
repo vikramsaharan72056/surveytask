@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:8888/signin", {
+      const res = await fetch("https://surveyform-xpol.onrender.com/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,10 +41,11 @@ export default function Login() {
     backgroundSize: "cover",
     backgroundPosition: "center",
     display: "flex",
+    height: "100vh",
   };
   return (
     <div style={styles} className="col-12">
-      <div style={{ marginTop: "10%" }} className="col-5">
+      <div style={{ marginTop: "10%" }} className="col-5 offset-1">
         <h2>Welcome to the new era of surveys</h2>
         <h6>Sign in to continue access pages</h6>
         <div style={{ marginTop: "10%" }}>
@@ -53,14 +54,14 @@ export default function Login() {
             <Button
               variant="primary"
               type="submit"
-              style={{ "margin-left": "25%", width: "50%" }}
+              style={{ marginLeft: "25%", width: "50%" }}
             >
               <Link to="/signup"> SignUp </Link>
             </Button>
           </div>
         </div>
       </div>
-      <div className="col-5 offset-2" style={{ margin: "10% 2%" }}>
+      <div className="col-4 offset-2" style={{ margin: "10% 2%" }}>
         <Container>
           <Card className="shadow">
             <Card.Body>
@@ -93,7 +94,7 @@ export default function Login() {
                     <Button
                       variant="primary"
                       type="submit"
-                      style={{ "margin-left": "25%", width: "50%" }}
+                      style={{ marginLeft: "25%", width: "50%" }}
                       onClick={handleSubmit}
                     >
                       Login

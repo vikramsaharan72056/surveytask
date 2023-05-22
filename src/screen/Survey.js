@@ -335,8 +335,8 @@ const DataTable = () => {
       <div>
         <Sidebar />
       </div>
-      <div>
-        <div className="col-12">
+      <div className="col-10">
+        <div>
           <div className=" page">
             <CDBContainer>
               <CDBCard className="table">

@@ -15,7 +15,7 @@ const Theme = () => {
   });
 
   useEffect(() => {
-    fetch("/themes")
+    fetch("https://surveyform-xpol.onrender.com/themes")
       .then((res) => res.json())
       .then((data) => {
         const selectedTheme = data[data.length - 1];
