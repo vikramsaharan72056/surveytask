@@ -36,6 +36,7 @@ const Next = () => {
       );
       if (res.ok) {
         alert("Theme saved");
+        closeModal();
       } else {
         alert("Theme not saved");
       }
