@@ -6,6 +6,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
 
   const formdata = {
     email: email,
@@ -23,12 +24,16 @@ export default function Login() {
         },
         body: JSON.stringify(formdata),
       });
+      const data = res.json();
+      setToken(data.token);
       if (res.status === 402) {
         alert("please provide all the details");
       } else if (res.status === 422) {
         alert("invalid credentials");
       } else if (res.status === 201) {
         alert("login successfull");
+
+        sessionStorage.setItem("token", token);
         navigate("/survey");
       }
     } catch (err) {
