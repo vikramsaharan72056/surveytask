@@ -11,14 +11,14 @@
     margin-bottom: 2%;
 }
 .box{
-    background-color: rgb(128, 128, 127);
+    background-color:  skyblue;
     color: aliceblue;
-    width: 95%;
+    width: 75%;
     margin-top: 5%;
     margin-left: 0%;
 
 }
 
 .box > input{
-    padding: 0% 15%;
+    padding: 0% 1%;
 }

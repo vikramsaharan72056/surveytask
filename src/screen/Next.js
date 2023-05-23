@@ -66,15 +66,25 @@ const Next = () => {
                 <Container>
                   <Navbar.Brand>Create Questions</Navbar.Brand>
                   <Navbar.Toggle />
-                  <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                      <button
-                        type="button"
-                        style={{ backgroundColor: "mediumseagreen" }}
-                        onClick={() => setModel(true)}
-                      >
-                        Theme Setting
-                      </button>
+                  <div className="justify-content-end">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyItems: "flex-end",
+                      }}
+                    >
+                      <div>
+                        <button
+                          type="button"
+                          style={{
+                            backgroundColor: "mediumseagreen",
+                          }}
+                          onClick={() => setModel(true)}
+                        >
+                          Theme Setting
+                        </button>
+                      </div>
+                      <div></div>
                       <ThemeModal
                         isOpen={model}
                         onClose={closeModal}
@@ -87,55 +97,73 @@ const Next = () => {
                       <Link to={"save"}>
                         <button className="save">Save</button>
                       </Link>
-                    </Navbar.Text>
-                  </Navbar.Collapse>
+                    </div>
+                  </div>
                 </Container>
               </Navbar>
             </section>
             <br />
             <div className="box ">
-              <h1>
-                Q1. <span> Question ?</span>
-              </h1>
-              <input type="text" placeholder="Enter Question"></input>
-              &nbsp; &nbsp; &nbsp; <i className="fa fa-gear"></i>{" "}
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
-                <label className="form-check-label" htmlFor="flexRadioDefault1">
-                  Value 1
-                </label>
+              <div style={{ display: "flex" }}>
+                <div className="col-1 ">Q1.</div>
+                <div className="col-4 ">
+                  {" "}
+                  <b> Question ?</b>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Enter Question"
+                      style={{ marginLeft: "5%" }}
+                    ></input>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault1"
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexRadioDefault1"
+                      >
+                        Value 1
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault2"
+                        checked
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexRadioDefault2"
+                      >
+                        Value 2
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault2"
+                        checked
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexRadioDefault2"
+                      >
+                        Value 3
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  checked
-                />
-                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                  Value 2
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  checked
-                />
-                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                  Value 3
-                </label>
-              </div>
-              <button className="add">Add Questions </button>
             </div>
+            <button className="add">Add Questions </button>
           </div>
         </div>
       </div>
