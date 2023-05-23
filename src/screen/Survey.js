@@ -7,9 +7,6 @@ import { Link } from "react-router-dom";
 import Create from "./Create";
 
 const DataTable = () => {
-  function testClickEvent(param) {
-    alert("Row Click Event");
-  }
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString();
