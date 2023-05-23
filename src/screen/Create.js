@@ -62,9 +62,10 @@ const Create = () => {
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                   <Navbar.Text>
-                    <button className="cancel">Cancel</button>
+                    <a href="/survey">
+                      <button className="cancel">Cancel</button>
+                    </a>
                     <span> </span>
-
                     <button className="next" type="submit" onClick={onSubmit}>
                       Next
                     </button>

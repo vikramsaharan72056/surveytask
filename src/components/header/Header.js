@@ -16,7 +16,7 @@ const Header = () => {
             <Navbar.Text>
               <NavDropdown id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Setting</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Logout</NavDropdown.Item>
+                <NavDropdown.Item href="/">Logout</NavDropdown.Item>
               </NavDropdown>
             </Navbar.Text>
           </Navbar.Collapse>
