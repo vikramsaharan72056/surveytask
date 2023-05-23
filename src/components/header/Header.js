@@ -10,7 +10,7 @@ const Header = () => {
     <div>
       <Navbar className="Navbar">
         <Container>
-          <Navbar.Brand href="/">LOGO</Navbar.Brand>
+          <Navbar.Brand href="/">10xSurvey</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
