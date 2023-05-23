@@ -26,18 +26,23 @@ const Create = () => {
     startDate,
     endDate,
   };
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const res = fetch("https://surveyform-xpol.onrender.com/createSurvey", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formdata),
-    });
+    const res = await fetch(
+      "https://surveyform-xpol.onrender.com/createSurvey",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formdata),
+      }
+    );
     if (res.status === 200) {
       alert("survey created successfully");
       navigate("/survey/create/next");
+    } else if (res.status === 500) {
+      alert("name value already exist");
     }
   };
 
